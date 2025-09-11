@@ -1,0 +1,9 @@
+<div class="container mt-5">
+    <h2>Add New Video Tutorial</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Add Video</button>
+        <a href="{% url 'Trainer:trainer_profile' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

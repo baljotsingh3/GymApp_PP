@@ -1,0 +1,18 @@
+                                                <div class="main-menu f-right d-none d-lg-block">
+                                                    <nav>
+                                                        <ul id="navigation">
+                                                            <li><a href="{% url "gymApp:home" %}">Home</a></li>
+                                                            {% comment %} <li><a href="about.html">About</a></li>
+                                                            <li><a href="services.html">Services</a></li>
+                                                            <li><a href="schedule.html">schedule</a></li>{% endcomment %}
+                                                            <li><a href="{% url "gymApp:video_list" %}">Video Gallary</a></li> 
+                                                            <li><a href="{% url "gymApp:public_blog_list" %}">Blogs</a>
+                                                            
+                                                            </li>
+                                                            <li><a href="{% url "gymApp:contact" %}">Contact</a></li>
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+                                                <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                                                    <a href="{% url "Member:login" %}" class="btn header-btn"> Log In</a>
+                                                </div>

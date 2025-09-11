@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Django Live Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    #chat-messages {
+      max-height: 350px;
+      overflow-y: auto;
+    }
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<section>
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+
+        <div class="card" id="chat1" style="border-radius: 15px;">
+          <div
+            class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            <i class="fas fa-angle-left"></i>
+            <p class="mb-0 fw-bold">Live Chat</p>
+            <i class="fas fa-times"></i>
+          </div>
+
+          <div class="card-body" id="chat-messages">
+            <p class="text-muted">Start chatting...</p>
+          </div>
+
+          <div class="card-footer border-0">
+            <div class="input-group">
+              <textarea id="chat-input" class="form-control bg-body-tertiary" rows="1" placeholder="Type your message"></textarea>
+              <button id="send-btn" class="btn btn-info text-white">Send</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const wsProtocol = window.location.protocol === "https:" ? "wss://" : "ws://";
+  const chatSocket = new WebSocket(wsProtocol + window.location.host + "/ws/chat/");
+
+  const chatMessages = document.getElementById("chat-messages");
+  const chatInput = document.getElementById("chat-input");
+  const sendBtn = document.getElementById("send-btn");
+
+  // typing indicator
+  const typingIndicator = document.createElement("div");
+  typingIndicator.classList.add("typing-indicator", "mt-2");
+  typingIndicator.innerHTML = `
+    <div class="spinner-border spinner-border-sm text-info" role="status"></div>
+    <span>AI is thinking...</span>
+  `;
+
+  function showTyping() {
+    if (!chatMessages.contains(typingIndicator)) {
+      chatMessages.appendChild(typingIndicator);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  }
+  function hideTyping() {
+    if (chatMessages.contains(typingIndicator)) {
+      chatMessages.removeChild(typingIndicator);
+    }
+  }
+
+  function appendMessage(sender, text) {
+    const row = document.createElement("div");
+    row.className = "d-flex flex-row " + (sender === "You" ? "justify-content-end" : "justify-content-start") + " mb-3";
+
+    const bubble = document.createElement("div");
+    bubble.className = "p-3";
+    bubble.style.borderRadius = "15px";
+    bubble.style.maxWidth = "75%";
+    bubble.style.backgroundColor = sender === "You" ? "rgba(57,192,237,.2)" : "#f1f1f1";
+    bubble.innerHTML = `<p class="small mb-0">${text}</p>`;
+
+    row.appendChild(bubble);
+    chatMessages.appendChild(row);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  sendBtn.addEventListener("click", () => {
+    const message = chatInput.value.trim();
+    if (!message) return;
+    appendMessage("You", message);
+    chatInput.value = "";
+    showTyping();
+    chatSocket.send(JSON.stringify({ "message": message }));
+  });
+
+  chatInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendBtn.click();
+    }
+  });
+
+  chatSocket.onmessage = (e) => {
+    const data = JSON.parse(e.data);
+    hideTyping();
+    appendMessage("AI", data.message);
+  };
+
+  chatSocket.onclose = () => {
+    hideTyping();
+    appendMessage("System", "Connection closed.");
+  };
+</script>
+
+</body>
+</html>

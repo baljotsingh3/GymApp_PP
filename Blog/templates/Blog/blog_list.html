@@ -1,0 +1,18 @@
+
+<h2> {{request.user.username}}'s Blog management </h2>
+<a href="{% url 'Blog:blog_create' %}" class="btn btn-primary">Create New Blog   </a>
+
+<a href="{% url 'Member:member_profile' %}" class="btn btn-primary mb-4">  |   Back to Profile</a>
+
+<hr>
+{% for blog in blogs %}
+  <div>
+    <h3><a href="{% url 'Blog:blog_detail' blog.pk %}">{{ blog.title }}</a></h3>
+    <small>By {{ blog.author.username }} | {{ blog.created_at|date:"d M Y H:i" }}</small>
+  </div>
+  <hr>
+  
+{% empty %}
+  <p>No blogs yet. Be the first to share!</p>
+{% endfor %}
+

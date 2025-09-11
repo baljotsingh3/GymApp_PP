@@ -1,0 +1,51 @@
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form method="POST" enctype="multipart/form-data" action="{% url 'Trainer:trainer_profile' %}">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="update_profile">
+
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Edit Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body p-4">
+          <div class="mb-3">
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" name="first_name" id="first_name" class="form-control" value="{{ trainer.first_name }}">
+          </div>
+
+          <div class="mb-3">
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" name="last_name" id="last_name" class="form-control" value="{{ trainer.last_name }}">
+          </div>
+
+          <div class="mb-3">
+            <label for="phone_number" class="form-label">Mobile</label>
+            <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ trainer.phone_number }}">
+          </div>
+
+          <div class="mb-3">
+            <label for="specialization" class="form-label">Specialization</label>
+            <select name="specialization" id="specialization" class="form-select">
+              {% for key, value in trainer.SPECIALIZATIONS %}
+                <option value="{{ key }}" {% if trainer.specialization == key %}selected{% endif %}>{{ value }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="profile_picture" class="form-label">Profile Picture</label>
+            <input type="file" name="profile_picture" id="profile_picture" class="form-control">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Video Tutorials</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .card video {
+            object-fit: cover;
+            height: 200px;
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .card video:hover {
+            transform: scale(1.05);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container my-5">
+        <h2 class="mb-4">My Video Tutorials</h2>
+
+        <a href="{% url 'Trainer:add_video' %}" class="btn btn-primary mb-4">Add New Video</a>
+
+        {% if videos %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for video in videos %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="position-relative">
+                        <!-- Video preview on hover -->
+                        <video class="card-img-top" preload="metadata" muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                            <source src="{{ video.video_file.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video.title }}</h5>
+                        <p class="card-text">{{ video.description|truncatewords:20 }}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <small class="text-muted">{{ video.created_at|date:"M d, Y" }}</small>
+                        <div>
+                            <a href="{% url 'Trainer:edit_video' video.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{% url 'Trainer:delete_video' video.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No videos uploaded yet.</p>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap 5 JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

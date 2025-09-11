@@ -1,0 +1,10 @@
+<form method="POST" action="{% url 'Member:pay' %}">
+    {% csrf_token %}
+    <input type="number" name="amount" placeholder="Enter Amount" class="form-control" required />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% if order_amount %}
+    <p>You entered: {{ order_amount }}</p>
+    <p> Order Status: {{ order_status }}</p>
+{% endif %}

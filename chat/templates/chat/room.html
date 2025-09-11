@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat with {{ chat_user.username }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f1f1f1;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .chat-header {
+            background: #0d6efd;
+            color: white;
+            padding: 15px;
+        }
+        .chat-body {
+            height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            background: #e9ecef;
+        }
+        .chat-message {
+            margin-bottom: 10px;
+            display: flex;
+        }
+        .chat-message.self {
+            justify-content: flex-end;
+        }
+        .chat-message .msg {
+            max-width: 75%;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .chat-message.self .msg {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .chat-message.other .msg {
+            background-color: #f1f1f1;
+        }
+        .chat-footer {
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">
+        Chat with {{ chat_user.username }}
+    </div>
+    <p>Room Name: {{ room_name }}</p>
+    
+    <div class="chat-body" id="chat-log">
+        <!-- Messages will appear here -->
+    </div>
+    <div class="chat-footer">
+        <div class="input-group">
+            <input type="text" id="chat-message-input" class="form-control" placeholder="Type a message...">
+            <button class="btn btn-primary" id="chat-message-submit">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let chatSocket = null;
+
+    const chatUserId = "{{ chat_user.id }}";
+    const currentUserId = "{{ request.user.id }}";
+    const roomName = [currentUserId, chatUserId].sort().join("_");
+
+    const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
+    chatSocket = new WebSocket(
+        wsScheme + '://' + window.location.host +
+        '/ws/chat/' + roomName + '/'
+    );
+
+    chatSocket.onopen = function(e) {
+        console.log("WebSocket connected.");
+    };
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const chatLog = document.querySelector('#chat-log');
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('chat-message');
+
+        if (data.user_id == currentUserId) {
+            messageDiv.classList.add('self');
+        } else {
+            messageDiv.classList.add('other');
+        }
+
+        const msgBubble = document.createElement('div');
+        msgBubble.classList.add('msg');
+        const time = new Date().toLocaleTimeString();
+        msgBubble.textContent = `${data.username}: ${data.message} (${time})`;
+        messageDiv.appendChild(msgBubble);
+        chatLog.appendChild(messageDiv);
+        chatLog.scrollTop = chatLog.scrollHeight;
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+        const input = document.querySelector('#chat-message-input');
+        const message = input.value;
+        if (message.trim() !== '') {
+            chatSocket.send(JSON.stringify({
+                'message': message,
+                'user_id': currentUserId,
+                'username': "{{ request.user.username }}"
+            }));
+            input.value = '';
+            input.focus();
+        }
+    };
+</script>
+
+</body>
+</html>

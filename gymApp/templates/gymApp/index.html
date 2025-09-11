@@ -1,0 +1,451 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Health &amp; Fitness | Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "gymApp/fitness_club/assets/img/favicon.ico" %}">
+
+	<!-- CSS here -->
+	<link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/bootstrap.min.css" %}">
+	<link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/owl.carousel.min.css" %}">
+	<link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/slicknav.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/flaticon.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/gijgo.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/animate.min.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/animated-headline.css" %}">
+	<link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/magnific-popup.css" %}">
+	<link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/fontawesome-all.min.css" %}">
+	<link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/themify-icons.css" %}">
+	<link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/slick.css" %}">
+	<link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/nice-select.css" %}">
+	<link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/style.css" %}">
+</head>
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static "gymApp/fitness_club/assets/img/logo/loder.png" %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+ <div class="header-area header-transparent">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="index.html"><img src="{% static "gymApp/fitness_club/assets/img/logo/logo.png" %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                               {%include "gymApp/main_menu.html" %}
+                                    
+                            </div>
+                        </div>   
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!--? slider Area Start-->
+        <div class="slider-area position-relative">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider slider-height d-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-9 col-md-8 col-sm-9">
+                                <div class="hero__caption">
+                                    <span data-animation="fadeInLeft" data-delay="0.1s">with Yuvraj Dhillon</span>
+                                    <h1 data-animation="fadeInLeft" data-delay="0.4s">Build Perfect body Shape for good and Healthy life.</h1>
+                                    <a href="{% url 'Member:register' %}" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.8s">became a member</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>          
+                </div>
+                <!-- Single Slider -->
+                <div class="single-slider slider-height d-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-9 col-md-8 col-sm-9">
+                                <div class="hero__caption">
+                                    <span data-animation="fadeInLeft" data-delay="0.1s">with patrick potter</span>
+                                    <h1 data-animation="fadeInLeft" data-delay="0.4s">Build Perfect body Shape for good and Healthy life.</h1>
+                                    <a href="from.html" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.8s">became a member</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>          
+                </div>
+            </div>
+            <!-- Video icon -->
+            <div class="video-icon">
+                <a class="popup-video btn-icon" href="{% static "gymApp\fitness_club\assets\video\No gravity muscle ups🗿.mp4" %}"><i class="fas fa-play"></i></a>
+            </div>
+        </div>
+        <!-- slider Area End-->
+        <!--? About Area Start -->
+        <section class="about-area section-padding30">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12">
+                        <!-- about-img -->
+                        <div class="about-img ">
+                            <img src="{% static "gymApp/fitness_club/assets/img/gallery/about.png" %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-caption">
+                            <!-- Section Tittle -->
+                            <div class="section-tittle section-tittle3 mb-35">
+                                <span>ABOUT oUR GYM</span>
+                                <h2>Safe Body building proper Solutions That Saves our Valuable Time!</h2>
+                            </div>
+                            <p class="pera-top">Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts &amp; elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replication of the designers is intended.</p>
+                            <p class="mb-65 pera-bottom">Brook presents your services with flexible, convefnient and chient anipurpose layouts. You can select your favorite layouts.</p>
+                            <a href="{% url "Member:register" %}" class="btn">became a member</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About-2 Area End -->
+        <!--? Services Area Start -->
+        <section class="services-area pt-100 pb-150 section-bg" data-background="{% static "gymApp/fitness_club/assets/img/gallery/section_bg01.png" %}">
+            <!--? Want To work -->
+            <section class="wantToWork-area w-padding">
+                <div class="container">
+                    <div class="row align-items-end justify-content-between">
+                        <div class="col-lg-6 col-md-10 col-sm-10">
+                            <div class="section-tittle section-tittle2">
+                                <span>oUR sERVICES FOR YOU</span>
+                                <h2>PUSH YOUR LIMITS FORWARD We Offer to you</h2>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <a href="{% url "gymApp:contact" %}" class="btn wantToWork-btn f-right">More Services</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Want To work End -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-cat text-center mb-50">
+                            <div class="cat-icon">
+                                <i class="flaticon-fitness"></i>
+                            </div>
+                            <div class="cat-cap">
+                                <h5><a href="services.html">QUALITY EQUIPMENT</a></h5>
+                                <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>
+                            </div>
+                            <div class="img-cap">
+                                <a href="{% url "gymApp:contact" %}" class="">Discover More About Us <i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-cat text-center mb-50">
+                            <div class="cat-icon">
+                                <i class="flaticon-healthcare-and-medical"></i>
+                            </div>
+                            <div class="cat-cap">
+                                <h5><a href="services.html">health caring</a></h5>
+                                <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>
+                            </div>
+                            <div class="img-cap">
+                                <a href="{% url "gymApp:contact" %}" class="">Discover More About Us <i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-cat text-center mb-50">
+                            <div class="cat-icon">
+                                <i class="flaticon-clock"></i>
+                            </div>
+                            <div class="cat-cap">
+                                <h5><a href="services.html">gym strategies</a></h5>
+                                <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>
+                            </div>
+                            <div class="img-cap">
+                                <a href="{% url "gymApp:contact" %}" class="">Discover More About Us <i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Area End -->
+        <!--? About-2 Area Start -->
+        <section class="about-area2 testimonial-area section-padding30 fix">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-11 col-sm-11">
+                        <!-- about-img -->
+                        <div class="about-img2">
+                            <img src="{% static "gymApp/fitness_club/assets/img/gallery/about2.png" %}" alt="">
+                            <!-- Shape -->
+                            <div class="shape-qutaion d-none d-sm-block">
+                                <img src="{% static "gymApp/fitness_club/assets/img//gallery/qutaion.png" %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-9 col-sm-9">
+                        <div class="about-caption">
+                            <!-- Section Tittle -->
+                            <div class="section-tittle mb-55">
+                                <span>Client Feedback</span>
+                                <h2>What Our Client thik about our gym</h2>
+                            </div>
+                            <!-- Testimonial Start -->
+                            <div class="h1-testimonial-active">
+                                <!-- Single Testimonial -->
+                                <div class="single-testimonial">
+                                    <div class="testimonial-caption">
+                                        <p>Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts &amp; elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replica;ition of thei designers ijtls intended csents your se.</p>
+                                        <div class="rattiong-caption">
+                                            <span>Guri chauhan<span>Gym Trainer</span> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Testimonial -->
+                                <div class="single-testimonial">
+                                    <div class="testimonial-caption">
+                                        <p>Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts &amp; elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replica;ition of thei designers ijtls intended csents your se.</p>
+                                        <div class="rattiong-caption">
+                                            <span>Harry mander<span>Gym Trainer</span> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Testimonial End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+   <section class="wantToWork-area w-padding">
+            <div class="container">
+                <div class="row align-items-end justify-content-between">
+                    <div class="col-lg-6 col-md-9 col-sm-9">
+                        <div class="section-tittle">
+                            <span>oUR TEAM MAMBERS</span>
+                            <h2>Our Most Exprienced Trainers</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-3">
+                        <a href="{% url "gymApp:contact" %}" class="btn wantToWork-btn f-right">More Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Want To work End -->
+
+
+
+        <!--? Team Ara Start -->
+        <div class="team-area pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-team mb-30">
+                            <div class="team-img">
+                                <img src="{% static "gymApp/fitness_club/assets/img/gallery/team1.png" %}" alt="">
+                                <div class="team-caption">
+                                    <span>Creative derector</span>
+                                    <h3><a href="#">Pinka Jarg</a></h3>
+                                    <!-- Blog Social -->
+                                    <div class="team-social">
+                                        <ul>
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-team mb-30">
+                            <div class="team-img">
+                                <img src="{% static "gymApp/fitness_club/assets/img/gallery/team2.png" %}" alt="">
+                                <div class="team-caption">
+                                    <span>Creative derector</span>
+                                    <h3><a href="#">Bazi Jand</a></h3>
+                                    <!-- Blog Social -->
+                                    <div class="team-social">
+                                        <ul>
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-team mb-30">
+                            <div class="team-img">
+                                <img src="{% static "gymApp/fitness_club/assets/img/gallery/team3.png" %}" alt="">
+                                <div class="team-caption">
+                                    <span>Creative derector</span>
+                                    <h3><a href="#"> Dev kharaud</a></h3>
+                                    <!-- Blog Social -->
+                                    <div class="team-social">
+                                        <ul>
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Team Ara End -->
+        <!--? Want To work -->
+        <section class="wantToWork-area w-padding section-bg" data-background="{% static "gymApp/fitness_club/assets/img/gallery/section_bg02.png" %}">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10">
+                        <div class="wantToWork-caption">
+                            <h2>September membership offer available Now</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-3">
+                        <a href="{% url "gymApp:contact" %}" class="btn wantToWork-btn f-right">More Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+<!--? Blog Area Start -->
+<section class="home-blog-area section-padding30">
+    <div class="container">
+        <!-- Section Tittle -->
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-9 col-sm-10">
+                <div class="section-tittle text-center mb-100">
+                    <span>RECENT NEWS FROM BLOG</span>
+                    <h2>GYM TIPS FOR YOU THAT WE SELECTED</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for blog in blogs %}
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="home-blog-single mb-30">
+                    <div class="blog-img-cap">
+                        <div class="blog-img">
+                            {% if blog.image %}
+                            <img src="{{ blog.image.url }}" alt="">
+                            {% else %}
+                            <img src="{% static 'gymApp/fitness_club/assets/img/gallery/blog1.png' %}" alt="">
+                            {% endif %}
+                            <!-- Blog date -->
+                            <div class="blog-date text-center">
+                                <span>{{ blog.created_at|date:"d" }}</span>
+                                <p>{{ blog.created_at|date:"M" }}</p>
+                            </div>
+                        </div>
+                        <div class="blog-cap">
+                            <span>{{ blog.author.get_full_name }}</span>
+                            <h3><a href="{% url 'Blog:blog_detail' blog.pk %}">{{ blog.title }}</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Blog Area End -->
+
+
+
+    </main>
+{% include "gymApp/main_footer.html"%}
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <!-- JS here -->
+
+    <script src="{% static "gymApp/fitness_club/assets/js/vendor/modernizr-3.5.0.min.js" %}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{% static "gymApp/fitness_club/assets/js/vendor/jquery-1.12.4.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/popper.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/bootstrap.min.js" %}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.slicknav.min.js" %}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{% static "gymApp/fitness_club/assets/js/owl.carousel.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/slick.min.js" %}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{% static "gymApp/fitness_club/assets/js/wow.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/animated.headline.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.magnific-popup.js" %}"></script>
+
+    <!-- Date Picker -->
+    <script src="{% static "gymApp/fitness_club/assets/js/gijgo.min.js" %}"></script>
+    <!-- Nice-select, sticky -->
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.nice-select.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.sticky.js" %}"></script>
+    
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.counterup.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/waypoints.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.countdown.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/hover-direction-snake.min.js" %}"></script>
+
+    <!-- contact js -->
+    <script src="{% static "gymApp/fitness_club/assets/js/contact.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.form.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.validate.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/mail-script.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.ajaxchimp.min.js" %}"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="{% static "gymApp/fitness_club/assets/js/plugins.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/main.js" %}"></script>
+    
+    </body>
+</html>

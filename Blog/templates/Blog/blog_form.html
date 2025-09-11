@@ -1,0 +1,15 @@
+<h2>{% if form.instance.pk %}Edit{% else %}New{% endif %} Blog</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+<a href="{% url 'Blog:blog_list' %}" class="btn btn-secondary">Cancel</a>
+
+{% if user_role == "Member" %}
+    <a href="{% url 'Member:member_profile' %}" class="btn btn-primary mb-4">Go to Member Profile</a>
+{% elif user_role == "Trainer" %}
+    <a href="{% url 'Trainer:trainer_dashboard' %}" class="btn btn-primary mb-4">Go to Trainer Dashboard</a>
+{% endif %}

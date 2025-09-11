@@ -1,0 +1,14 @@
+
+<h2>{{ blog.title }}</h2>
+
+<p>{{ blog.content }}</p>
+
+<small>By {{ blog.author.username }} | {{ blog.created_at|date:"d M Y H:i" }}</small>
+
+{% if blog.author == user %}
+  <a href="{% url 'Blog:blog_edit' blog.pk %}" class="btn btn-warning">Edit</a>
+  <a href="{% url 'Blog:blog_delete' blog.pk %}" class="btn btn-danger">Delete</a>
+{% endif %}
+
+<a href="{% url 'Blog:blog_list' %}" class="btn btn-secondary">Back to Blogs</a>
+

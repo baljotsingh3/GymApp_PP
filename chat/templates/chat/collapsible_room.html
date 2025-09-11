@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Chat with {{ chat_user.username }}</title>
+
+  <!-- MDB CSS -->
+  <link rel="stylesheet" href="{% static 'chat/css/bootstrap-chat.min.css' %}" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+</head>
+<body style="background-color: #eee;">
+
+<section class="container py-5 d-flex justify-content-center">
+    <div class="card" style="width: 350px;">
+        <div class="card-header text-center bg-info text-white position-relative">
+            Chat with {{ chat_user.username }}
+            <!-- Elegant Exit Button at Top Right -->
+            <a href="{% url 'chat:user_list' %}" class="btn btn-sm btn-outline-light position-absolute top-0 end-0 mt-2 me-2" title="Exit Chat">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+
+       
+        <div class="card-body p-0" style="height: 400px; overflow-y: auto;" id="chat-log">
+            <!-- Messages will be appended here -->
+        </div>
+        <div class="card-footer p-2 d-flex align-items-center bg-white">
+            <input type="text" id="chat-message-input" class="form-control form-control-lg" placeholder="Type message...">
+            <button id="chat-message-submit" class="btn btn-info ms-2"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</section>
+        
+        
+
+
+<script>
+    const chatUserId = "{{ chat_user.id }}";
+    const currentUserId = "{{ request.user.id }}";
+    const roomName = [currentUserId, chatUserId].sort().join("_");
+
+    const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
+    const chatSocket = new WebSocket(
+        wsScheme + '://' + window.location.host + '/ws/chat/' + roomName + '/'
+    );
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const chatLog = document.getElementById('chat-log');
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('d-flex', 'mb-2');
+
+        if (data.user_id == currentUserId) {
+            msgDiv.classList.add('justify-content-end');
+            msgDiv.innerHTML = `<div class="bg-info text-white p-2 rounded-3" style="max-width: 70%;">${data.username}: ${data.message}</div>`;
+        } else {
+            msgDiv.classList.add('justify-content-start');
+            msgDiv.innerHTML = `<div class="bg-light p-2 rounded-3" style="max-width: 70%;">${data.username}: ${data.message}</div>`;
+        }
+
+        chatLog.appendChild(msgDiv);
+        chatLog.scrollTop = chatLog.scrollHeight;
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.getElementById('chat-message-input').addEventListener('keyup', function(e) {
+        if (e.keyCode === 13) {
+            document.getElementById('chat-message-submit').click();
+        }
+    });
+
+    document.getElementById('chat-message-submit').addEventListener('click', function() {
+        const input = document.getElementById('chat-message-input');
+        const message = input.value.trim();
+        if (message !== "") {
+            chatSocket.send(JSON.stringify({
+                'message': message,
+                'user_id': currentUserId,
+                'username': "{{ request.user.username }}"
+            }));
+            input.value = '';
+            input.focus();
+        }
+    });
+</script>
+
+<script src="{% static 'chat/js/mdb.min.js' %}"></script>
+</body>
+</html>

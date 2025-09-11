@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Card</title>
+
+  <!-- Bootstrap CSS -->
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet"
+  >
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'Billing/css/style_payment_form.css' %}">
+
+</head>
+<body>
+
+  <form method="post" action="{% url 'Member:payment_card' %}">
+    {% csrf_token %}
+
+            <div class="container d-flex justify-content-center mt-5">
+              <div class="card p-3 shadow-lg">
+
+                <!-- Card Header -->
+                <div class="d-flex pt-3 pl-3 align-items-center">
+                  <div>
+                    <img src="https://img.icons8.com/ios-filled/50/000000/visa.png" width="60" height="80" alt="Visa Card" />
+                  </div>
+                  <div class="mt-3 pl-2">
+                          
+                            {% if messages %}
+                              {% for message in messages %}
+                            <!-- Success -->
+                            <div class="alert alert-{{ message.tags}}" role="alert">
+                              {{ message }}
+
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+
+                            </div>
+                              {% endfor %}
+                           {% endif %}
+                          
+                
+                    <span class="name font-weight-bold">Martina Thomas</span>
+                    <div>
+                      <span class="cross">&#10005;&#10005;&#10005;&#10005;</span>
+                      <span class="pin ml-2">8880</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Total Amount Option -->
+                {% comment %} <div class="py-2 px-3">
+                  <div class="first pl-2 d-flex py-2">
+                    {% comment %} <div class="form-check">
+                      
+                      <input type="number" name="amount" class="form-check-input mt-3 dot" checked>
+                    </div> 
+                    
+
+                      
+
+                      <span class="head">Month </span>
+                      <div>
+                        
+                        <input type="number" name="amount" class="form-control" placeholder="1000" >
+                      </div> 
+                    
+                  </div>
+                </div>  {% endcomment %}
+
+                <div class="py-2 px-3">
+                  <div class="first pl-2 d-flex py-2 align-items-center">
+
+                  <!-- Label -->
+                  <span class="head mr-3">Month</span>
+
+                 
+                 
+                    <div class="d-flex align-items-center">
+                        
+                        <input 
+                          type="number" 
+                          name="amount" 
+                          class="form-control ml-1 w-50" 
+                          placeholder="0"
+                          min="0"
+                        >
+                      </div>
+
+
+                  </div>
+                </div>
+
+
+
+                <!-- Other Amount Option -->
+                <div class="py-2 px-3">
+                  <div class="second pl-2 d-flex py-2">
+                    
+                    <div class="border-left pl-2">
+                      <span class="head">Amount</span>
+                      <div class="d-flex">
+                        <span class="dollar">Rs</span>
+                        <input 
+                          type="text" 
+                          name="amount" 
+                          class="form-control ml-1 w-50" 
+                          placeholder="0"
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                
+       
+
+                <!-- Footer Buttons -->
+                 <div class="d-flex justify-content-between px-3 pt-4 pb-3">
+                  <div>
+                    <span class="back text-primary" role="button" onclick="window.location.href='{% url 'Member:billing' %}'">
+
+                      Go Back
+                    </span>
+                    
+                      </div> 
+                  
+                  
+                 <button type="submit" class="btn btn-primary button">Pay amount</button>
+                </div>
+                         
+              </div>
+            </div>
+
+  </form>
+  <!-- Bootstrap JS + Dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+ 
+  <!-- Custom JS -->
+  <script src="#"></script>
+</body>
+</html>

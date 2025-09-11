@@ -1,0 +1,238 @@
+<!doctype html>
+{% load static%}
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Health & Fitness | Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "gymApp/fitness_club/assets/img/favicon.ico" %}">
+
+   <!-- CSS here -->
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/slicknav.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/animate.min.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "gymApp/fitness_club/assets/css/style.css" %}">
+</head>
+    <!--? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static "gymApp/fitness_club/assets/img/logo/loder.png" %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!--? Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="index.html"><img src="{% static "gymApp/fitness_club/assets/img/logo/logo.png" %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                               {% include "gymApp/main_menu.html"%}
+                            </div>
+                        </div>   
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70 text-center">
+                                <h2>Contact Us</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+        <!--?  Contact Area start  -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="d-none d-sm-block mb-5 pb-4">
+                   
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54891.86317500452!2d76.66693328464302!3d30.697549903578082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fee8aca533913%3A0x223c13c40a8cc219!2sGold&#39;s%20Gym%20Mohali!5e0!3m2!1sen!2sin!4v1757568811765!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                   
+                    <script>
+                        function initMap() {
+                            var uluru = {
+                                lat: -25.363,
+                                lng: 131.044
+                            };
+                            var grayStyles = [{
+                                    featureType: "all",
+                                    stylers: [{
+                                            saturation: -90
+                                        },
+                                        {
+                                            lightness: 50
+                                        }
+                                    ]
+                                },
+                                {
+                                    elementType: 'labels.text.fill',
+                                    stylers: [{
+                                        color: '#ccdee9'
+                                    }]
+                                }
+                            ];
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                center: {
+                                    lat: -31.197,
+                                    lng: 150.744
+                                },
+                                zoom: 9,
+                                styles: grayStyles,
+                                scrollwheel: false
+                            });
+                        }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&amp;callback=initMap">
+                    </script>
+    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="contact-title">Get in Touch</h2>
+                    </div>
+                    <div class="col-lg-8">
+                                                        
+                                        <form method="post" novalidate>
+                                            {% csrf_token %}
+                                            {{ form.non_field_errors }}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    {{ form.message.errors }}
+                                                    {{ form.message }}
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    {{ form.name.errors }}
+                                                    {{ form.name }}
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    {{ form.email.errors }}
+                                                    {{ form.email }}
+                                                </div>
+                                                <div class="col-12">
+                                                    {{ form.subject.errors }}
+                                                    {{ form.subject }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group mt-3">
+                                                <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                                            </div>
+                                        </form>
+
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                <div class="alert alert-success">{{ message }}</div>
+                                            {% endfor %}
+                                        {% endif %}
+
+
+
+                        </div>
+                    <div class="col-lg-3 offset-lg-1">
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-home"></i></span>
+                            <div class="media-body">
+                                <h3>Mohali</h3>
+                                <p>Phase 8B</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                            <div class="media-body">
+                                <h3>+91 8968275572</h3>
+                                <p>Mon to Fri 9am to 6pm</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-email"></i></span>
+                            <div class="media-body">
+                                <h3>jotd2@gmail.com</h3>
+                                <p>Send us your query anytime!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Area End -->
+
+
+    </main>
+    
+    
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+         {% include "gymApp/footer.html"%}
+    <!-- JS here -->
+
+    <script src="{% static "gymApp/fitness_club/assets/js/vendor/modernizr-3.5.0.min.js" %}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{% static "gymApp/fitness_club/assets/js/vendor/jquery-1.12.4.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/popper.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/bootstrap.min.js" %}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.slicknav.min.js" %}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{% static "gymApp/fitness_club/assets/js/owl.carousel.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/slick.min.js" %}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{% static "gymApp/fitness_club/assets/js/wow.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/animated.headline.js" %}"></script>
+    
+    <!-- Nice-select, sticky -->
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.nice-select.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.sticky.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.magnific-popup.js" %}"></script>
+
+    <!-- contact js -->
+    <script src="{% static "gymApp/fitness_club/assets/js/contact.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.form.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.validate.min.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/mail-script.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/jquery.ajaxchimp.min.js" %}"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="{% static "gymApp/fitness_club/assets/js/plugins.js" %}"></script>
+    <script src="{% static "gymApp/fitness_club/assets/js/main.js" %}"></script>
+
+    </body>
+</html>
