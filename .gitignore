@@ -1,5 +1,16 @@
-*.pyc
+# Python
 __pycache__/
-db.sqlite3
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+*.sqlite3
+
+# Django
+*.log
+*.pot
+*.pyc
+/staticfiles/
+media/
 .env
-/media/
