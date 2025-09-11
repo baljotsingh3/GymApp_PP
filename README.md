@@ -1,4 +1,4 @@
-💪 ## Gym App Summary
+## Gym App Summary
 
 
 Core Features & Pages
