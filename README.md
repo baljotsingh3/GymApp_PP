@@ -45,9 +45,9 @@ Core Features & Pages
 
 Role	Access
 
-Member	  
+#### Member	  
       Chat, Payments, Videos, Blogs, Dashboard
-Trainer	
+#### Trainer	
       Member Management, Videos, Workouts, Metrics, Chat
-Admin	
+#### Admin	
       Full access: Users, Branches, Payments, Reports
