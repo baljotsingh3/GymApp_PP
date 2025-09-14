@@ -1,5 +1,10 @@
 ## Gym App Summary
 
+Demo live here: https://gymapp-pp-1.onrender.com/
+
+Login as trainer 
+use login : jora@gmail.com 
+password: 1234
 
 Core Features & Pages
 
