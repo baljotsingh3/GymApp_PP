@@ -1,6 +1,6 @@
 ## Gym App Summary
 
-Demo live here: https://gymapp-pp-1.onrender.com/
+Demo live here: [Play](https://gymapp-pp-1.onrender.com/)
 
 Login as trainer 
 use login : jora@gmail.com 
